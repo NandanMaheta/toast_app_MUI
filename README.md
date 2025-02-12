@@ -1,8 +1,42 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🚀 React Toast Notification System (MUI)
 
-Currently, two official plugins are available:
+A lightweight, customizable, and reusable toast notification system built with React & Material-UI (MUI). Provides feedback to users with different message types like Success, Error, Warning, and Info using MUI's Snackbar and Alert components.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+
+
+## ✨ Features  
+✅ Independent & Reusable  
+✅ Configurable Duration  
+✅ Actionable Toasts (With Button Click)  
+✅ Default Types: **Success, Error, Warning, Info**  
+✅ Supports Custom Styling  
+
+---
+
+
+
+## 🎯 How to Run Locally  
+
+1️⃣ Clone the repository:  
+```bash
+git clone https://github.com/NandanMaheta/toast_app_MUI.git
+cd toast_app_MUI
+
+
+
+
+🖥️ Usage
+Use the built-in buttons on the Home Page to trigger different toast notifications.
+Example:
+
+addToast('Success! Operation completed.', 'success');
+addToast('Error! Something went wrong.', 'error');
+
+
+
+📌 Demo
+Live Preview: Deploy on Vercel/Netlify
