@@ -5,6 +5,7 @@ import { ToastProvider } from './ToastProvider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import CustomToast from './customToast';
+import logo from "./assests/HORIZONTAL.avif"
 // ThemeWrapper manages the theme for the app
 const ThemeWrapper = () => {
   const [colorMode, setColorMode] = useState('light'); // State for theme mode
@@ -32,7 +33,7 @@ const ThemeWrapper = () => {
           mode={colorMode} 
         />
       </ToastProvider>
-      <CustomToast/>
+      <CustomToast logo={logo} message="Robust solutions for Home Healthcare Firms." link="https://www.levich.co/"/>
     </ThemeProvider>
   );
 };

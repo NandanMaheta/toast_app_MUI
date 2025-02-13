@@ -1,11 +1,11 @@
 
 import React,{useState,useEffect} from 'react';
 import styles from "./styles/CustomToast.module.css"
-import logo from "./assests/HORIZONTAL.avif"
 
 
 
-const CustomToast = () => {
+
+const CustomToast = ({logo,message,link}) => {
   const [visible, setVisible] = useState(false);
 
   // Show the toast 1.4 seconds after component mounts
@@ -31,13 +31,14 @@ const CustomToast = () => {
       </div>
       <div className={styles.content}>
         <p className={styles.message}>
-          Providing Robust solutions for Home Healthcare Firms.
+          {message}
         </p>
         <p className={styles.subMessage}>
           Talk with our experts for tailored solutions:
+          {/*can make also it as a cusmtomize prope*/}
         </p>
         <a 
-          href="https://www.levich.co/" 
+          href={link}
           target="_blank" 
           rel="noopener noreferrer" 
           className={styles.button}
@@ -53,5 +54,6 @@ const CustomToast = () => {
 };
 
 export default CustomToast;
+
 
 
