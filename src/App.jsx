@@ -1,59 +1,60 @@
-import React from 'react';
+
 import { Container, Typography, Button, Stack, Box } from '@mui/material';
 import { useToast } from './ToastProvider';
 
-// "App" receives "toggleTheme" and "mode" as props for theme switching.
+// App component that show toasts and toggle theme
 const App = ({ toggleTheme, mode }) => {
-  const { addToast } = useToast();
-
-  // showToast: call addToast with a message and its type.
-  const showToast = (msg, severity) => {
-    addToast(msg, severity);
-  };
+  const { showToast } = useToast(); // useToast hook to shaw toasts
 
   return (
-    // Box is used to center the content both vertically and horizontally.
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
-      }}
-    >
-      <Container
-        maxWidth="sm"
-        sx={{
-          textAlign: 'center',
-          p: 4,
-          backgroundColor: 'background.default', // uses theme's background
-          borderRadius: 2,
-          boxShadow: 3,
-        }}
-      >
+    <Box sx={centerScreenStyle}>
+      <Container maxWidth="sm" sx={containerStyle}>
+        {/* App title */}
         <Typography variant="h4" gutterBottom>
-          Simple Toast App
+          Toast Demo App
         </Typography>
+
+        {/* Stack for butttons */}
         <Stack spacing={2}>
-          <Button variant="contained" onClick={() => showToast('Success message', 'success')}>
-            Show Success Toast
+          {/* Buttons to show different types of toasts */}
+          <Button variant="contained" onClick={() => showToast('Success!', 'success')}>
+            Show Success
           </Button>
-          <Button variant="contained" onClick={() => showToast('Error message', 'error')}>
-            Show Error Toast
+          <Button variant="contained" onClick={() => showToast('Error!', 'error')}>
+            Show Error
           </Button>
-          <Button variant="contained" onClick={() => showToast('Warning message', 'warning')}>
-            Show Warning Toast
+          <Button variant="contained" onClick={() => showToast('Warning!', 'warning')}>
+            Show Warning
           </Button>
-          <Button variant="contained" onClick={() => showToast('Info message', 'info')}>
-            Show Info Toast
+          <Button variant="contained" onClick={() => showToast('Info!', 'info')}>
+            Show Info
           </Button>
+
+          {/* Button to toggle themee */}
           <Button variant="outlined" onClick={toggleTheme}>
-            Toggle to {mode === 'light' ? 'Dark' : 'Light'} Theme
+            Switch to {mode === 'light' ? 'Dark' : 'Light'} Mode
           </Button>
         </Stack>
       </Container>
     </Box>
   );
+};
+
+// Styles for centering content on scrreen
+const centerScreenStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  minHeight: '100vh', // Full viewport height
+};
+
+// Styles for the container
+const containerStyle = {
+  textAlign: 'center',
+  p: 4, // Padding
+  backgroundColor: 'background.default', // Background color from theme
+  borderRadius: 2, 
+  boxShadow: 3, // Shadow effect
 };
 
 export default App;

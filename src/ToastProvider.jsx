@@ -1,46 +1,48 @@
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
-// Create a context for toast messages
+// Create context for toast system
 const ToastContext = createContext();
 
-// ToastProvider wraps your app and provides toast functions to all children.
+// ToastProvider manages toast messages and display them
 export const ToastProvider = ({ children }) => {
-    
-  // "toasts" is an array of toast objects: { id, message, severity }
-  const [toasts, setToasts] = useState([]);
+  const [messages, setMessages] = useState([]); // State for toast messages
 
-  // addToast: add a new toast message.
-  // "message" is the text; "severity" can be "success", "error", "warning", or "info".
-  const addToast = (message, severity = 'info') => {
-    const id = Date.now(); // use current time as a unique id
-    setToasts(prev => [...prev, { id, message, severity }]);
+  // Function to add new toast message
+  const showToast = (text, type = 'info') => {
+    const newMessage = {
+      id: Date.now(), // Unique ID for each message
+      text,
+      type // Type of toast (success, error, warning, info)
+    };
+    setMessages(prev => [...prev, newMessage]); // Add new message to state
   };
 
-  // removeToast: remove a toast by its id.
-  const removeToast = (id) => {
-    setToasts(prev => prev.filter(toast => toast.id !== id));
+  // Function to remove toast by ID
+  const removeMessage = (id) => {
+    setMessages(prev => prev.filter(msg => msg.id !== id)); // Filter out the message
   };
 
   return (
-    <ToastContext.Provider value={{ addToast }}>
-      {children}
-      {/* Render each toast as a Snackbar with an Alert */}
-      {toasts.map(({ id, message, severity }) => (
+    <ToastContext.Provider value={{ showToast }}>
+      {children} {/* Render children components */}
+
+      {/* Map through messages and display them as Snackbars */}
+      {messages.map(({ id, text, type }) => (
         <Snackbar
-          key={id}                 // Unique key for the list
-          open={true}              // Always open while active
-          autoHideDuration={3000}  // Toast hides after 3 seconds
-          onClose={() => removeToast(id)}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} // Center bottom of screen
+          key={id} // Unique key for React
+          open={true} // Always open
+          autoHideDuration={2500} // Auto-hide after 3 seconds
+          onClose={() => removeMessage(id)} // Close handler
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} // Position on screen
         >
           <Alert
-            onClose={() => removeToast(id)}
-            severity={severity}    // Controls the color/style
-            sx={{ width: '100%' }}
+            onClose={() => removeMessage(id)} // Close handler for Alert
+            severity={type} // Type of Alert (success, error, warning, info)
+            sx={{ width: '100%' }} // Full width
           >
-            {message}
+            {text} {/* Message text */}
           </Alert>
         </Snackbar>
       ))}
@@ -48,11 +50,9 @@ export const ToastProvider = ({ children }) => {
   );
 };
 
-// Custom hook for easy access to the toast functions
+// Custom hook to use toast functions
 export const useToast = () => {
   const context = useContext(ToastContext);
-  if (!context) {
-    throw new Error('useToast must be used inside ToastProvider');
-  }
+  if (!context) throw new Error('useToast must be used within ToastProvider'); // Error handling
   return context;
 };
