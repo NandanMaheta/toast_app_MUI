@@ -39,4 +39,4 @@ addToast('Error! Something went wrong.', 'error');
 
 
 📌 Demo
-Live Preview: Deploy on Vercel/Netlify
+Live Preview: https://toast-app-mui.vercel.app/
