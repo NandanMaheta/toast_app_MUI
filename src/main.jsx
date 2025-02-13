@@ -4,7 +4,7 @@ import App from './App';
 import { ToastProvider } from './ToastProvider';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-
+import CustomToast from './customToast';
 // ThemeWrapper manages the theme for the app
 const ThemeWrapper = () => {
   const [colorMode, setColorMode] = useState('light'); // State for theme mode
@@ -32,6 +32,7 @@ const ThemeWrapper = () => {
           mode={colorMode} 
         />
       </ToastProvider>
+      <CustomToast/>
     </ThemeProvider>
   );
 };

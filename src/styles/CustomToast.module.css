@@ -1,0 +1,142 @@
+
+.customToast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    max-width: 360px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: slideIn 0.4s ease-out;
+   
+    
+  }
+  
+  .imageContainer {
+    
+    margin-right: 13px;
+  }
+  
+  .logo {
+    width: 70px;
+    height: 50px;
+    object-fit: contain;
+  }
+ 
+  
+  .message {
+    font-size: 12px;
+    margin: 0 0 8px 0;
+ 
+  }
+  
+  .subMessage {
+    font-size: 11px;
+    margin: 0 0 12px 0;
+    color: #555;
+  }
+  
+  .button {
+    display: inline-block;
+    background-color: #0070f3;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 12px;
+    transition: background-color 0.2s;
+  }
+  
+  .button:hover {
+    background-color: #005bb5;
+  }
+  
+  .closeButton {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    color: #888;
+    margin-left: 12px;
+  }
+  
+  .closeButton:hover {
+    color: #333;
+  }
+  @keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  
+  @media (max-width: 480px) {
+    .customToast {
+    margin-left: auto;
+    margin-right: auto;
+      right: 10px;
+      bottom: 10px;
+      max-width: 280px;
+      max-height: 100px;
+      padding: 7px;
+    }
+  
+  
+  .imageContainer {
+    margin-right: 3px;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 30px;
+    object-fit: contain;
+  }
+  
+  
+  
+  .message {
+    font-size: 9px;
+    margin: 0 0 5px 0;
+  }
+  
+  .subMessage {
+    font-size: 8px;
+    margin: 0 0 4px 0;
+    color: #555;
+  }
+  
+  .button {
+    display: inline-block;
+    background-color: #0070f3;
+    color: #fff;
+    padding: 3;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 8px;
+    transition: background-color 0.2s;
+  }
+  
+  .button:hover {
+    background-color: #005bb5;
+  }
+  
+  .closeButton {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    color: #888;
+    margin-left: 12px;
+  }
+  
+  .closeButton:hover {
+    color: #333;
+  }}
